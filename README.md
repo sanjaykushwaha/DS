@@ -69,3 +69,34 @@
                          return findZeroCount(a, i, pivot);
                      }
            }
+
+
+###### 5. Given dynamic price trends of stock market find when to buy and sell for maximum profit. example input[10,20,55,30, 60,100,70,50,150,200,170]. output is: {0,2}, {3,5}, {7,9}
+
+         public void maxProfitStockMoarket(int[] a){
+                 int buyAt = 0, sellAt = 0;
+                 boolean toBuy = false, toSell = false;
+                 for(int i=1; i<a.length; i++){
+                     if(a[i] < a[buyAt]){
+                         buyAt = i;
+                         sellAt = i;
+                         continue;
+                     }else{
+                         toBuy = true;
+                     }
+
+                     if(a[i] > a[sellAt]){
+                         sellAt = i;
+                     }else{
+                         toSell = true;
+                     }
+
+                     if(toBuy && toSell){
+                         System.out.println("BuyAt: "+buyAt+" sellAt: "+sellAt);
+                         sellAt++;
+                         buyAt = sellAt;
+                         toBuy = false;
+                         toSell = false;
+                     }
+                 }
+             }
