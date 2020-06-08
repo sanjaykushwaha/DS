@@ -16,28 +16,29 @@
                    i++; j--;
                }
            }
-      }
+      } 
    
 ###### 2. Find substring in given string without using library method
     intput: String(a): asdcdeef, SubString(b) : sdc 
     private boolean isSubString(String a, String b){
-            if(a!= null&& !a.isEmpty() && b!= null && !b.isEmpty() && b.length()<a.length()) {
-                char[] aChars = a.toCharArray();
-                char[] bChars = b.toCharArray();
-                int i = 0, j = 0, count = 0;
-                while (i < aChars.length) {
-                    if (aChars[i] == bChars[j]) {
-                        i++;
+             if(a!= null&& !a.isEmpty() && b!= null && !b.isEmpty() && b.length()<a.length()) {
+                 char[] aChars = a.toCharArray();
+                 char[] bChars = b.toCharArray();
+                 int i = 0, j = 0;
+                 while (i < aChars.length) {
+                     if (aChars[i] == bChars[j]) {
                         j++;
-                        count++;
-                    } else {
-                        i++;
-                        count = 0;
-                    }
-                }
-                return count == j;
-            }
-            return false;
+                      } else {
+                        j=0;
+                      }
+                     if(j == bChars.length) {
+                       break;
+                     }
+                     i++;
+                 }
+                 return bChars.length == j;
+              }
+             return false;
         }
 
 ###### 3. Given sorted array in such a way that all 1's place in begning and 0's placed in the last. Find 1's count in O(longn) complexity.
